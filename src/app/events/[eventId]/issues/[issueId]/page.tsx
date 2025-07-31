@@ -12,10 +12,14 @@ export default function IssueDetailPage() {
   const [eventTemplate, setEventTemplate] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [debugInfo, setDebugInfo] = useState<any>({})
 
   useEffect(() => {
     const eventId = params.eventId as string
     const issueId = params.issueId as string
+
+    console.log('Debug - eventId:', eventId)
+    console.log('Debug - issueId:', issueId)
 
     if (!eventId || !issueId) {
       setError('イベントIDまたは論点IDが見つかりません')
@@ -24,15 +28,30 @@ export default function IssueDetailPage() {
     }
 
     const event = getEventTemplateById(eventId)
+    console.log('Debug - event:', event)
+    
     if (!event) {
       setError('イベントが見つかりません')
       setLoading(false)
       return
     }
 
+    console.log('Debug - event.issueDetails:', event.issueDetails)
+    console.log('Debug - event.issueDetails.length:', event.issueDetails?.length)
+
     const issue = getIssueDetailById(eventId, issueId)
+    console.log('Debug - issue:', issue)
+    
     if (!issue) {
       setError('論点が見つかりません')
+      setDebugInfo({
+        eventId,
+        issueId,
+        eventFound: !!event,
+        eventIssueDetailsLength: event.issueDetails?.length,
+        eventIssueDetails: event.issueDetails,
+        issueFound: false
+      })
       setLoading(false)
       return
     }
@@ -96,6 +115,15 @@ export default function IssueDetailPage() {
       <div className="text-center py-12">
         <h1 className="text-2xl font-bold text-gray-900 mb-4">エラー</h1>
         <p className="text-gray-600 mb-6">{error}</p>
+        
+        {/* Debug Information */}
+        <div className="bg-gray-100 p-4 rounded-lg mb-6 text-left max-w-2xl mx-auto">
+          <h3 className="font-semibold mb-2">デバッグ情報:</h3>
+          <pre className="text-xs text-gray-700 whitespace-pre-wrap">
+            {JSON.stringify(debugInfo, null, 2)}
+          </pre>
+        </div>
+        
         <Link
           href="/events"
           className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"

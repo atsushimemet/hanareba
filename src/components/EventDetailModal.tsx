@@ -16,6 +16,9 @@ export default function EventDetailModal({ event, isOpen, onClose }: EventDetail
     return `¥${budget.toLocaleString()}`
   }
 
+  console.log('EventDetailModal - event:', event)
+  console.log('EventDetailModal - event.issueDetails:', event.issueDetails)
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-end sm:items-center justify-center">
       <div className="bg-white w-full h-full sm:h-auto sm:max-w-md sm:rounded-lg shadow-xl">
@@ -66,13 +69,20 @@ export default function EventDetailModal({ event, isOpen, onClose }: EventDetail
             <h3 className="font-medium text-blue-900 mb-3">このイベントの主要な論点</h3>
             <div className="space-y-2">
               {event.keyIssues.map((issue, index) => {
+                console.log(`Processing issue ${index}:`, issue)
+                
                 // 論点の詳細データがあるかチェック
-                const hasDetail = event.issueDetails.some(detail => 
-                  detail.title === issue
-                )
+                const hasDetail = event.issueDetails.some(detail => {
+                  console.log(`Comparing "${detail.title}" with "${issue}"`)
+                  return detail.title === issue
+                })
+                
+                console.log(`Issue "${issue}" has detail:`, hasDetail)
                 
                 if (hasDetail) {
                   const issueDetail = event.issueDetails.find(detail => detail.title === issue)
+                  console.log(`Found issue detail:`, issueDetail)
+                  
                   return (
                     <Link
                       key={index}
