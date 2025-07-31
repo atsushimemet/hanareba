@@ -1,6 +1,7 @@
 'use client'
 
 import { EventTemplate } from '@/lib/event-templates'
+import Link from 'next/link'
 
 interface EventDetailModalProps {
   event: EventTemplate
@@ -63,14 +64,39 @@ export default function EventDetailModal({ event, isOpen, onClose }: EventDetail
 
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <h3 className="font-medium text-blue-900 mb-3">このイベントの主要な論点</h3>
-            <ul className="text-blue-800 text-sm space-y-2">
-              {event.keyIssues.map((issue, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="text-blue-600 mr-2 mt-1">•</span>
-                  <span>{issue}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="space-y-2">
+              {event.keyIssues.map((issue, index) => {
+                // 論点の詳細データがあるかチェック
+                const hasDetail = event.issueDetails.some(detail => 
+                  detail.title === issue
+                )
+                
+                if (hasDetail) {
+                  const issueDetail = event.issueDetails.find(detail => detail.title === issue)
+                  return (
+                    <Link
+                      key={index}
+                      href={`/events/${event.id}/issues/${issueDetail?.id}`}
+                      className="block p-3 bg-white rounded border border-blue-200 hover:border-blue-400 hover:bg-blue-50 transition-colors cursor-pointer"
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="text-blue-800 text-sm">{issue}</span>
+                        <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </Link>
+                  )
+                } else {
+                  return (
+                    <div key={index} className="flex items-start p-3 bg-white rounded border border-gray-200">
+                      <span className="text-blue-600 mr-2 mt-1">•</span>
+                      <span className="text-blue-800 text-sm">{issue}</span>
+                    </div>
+                  )
+                }
+              })}
+            </div>
           </div>
 
           <div className="bg-green-50 border border-green-200 rounded-lg p-4">

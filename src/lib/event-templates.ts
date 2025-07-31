@@ -1,3 +1,20 @@
+export interface IssueDetail {
+  id: string
+  title: string
+  purpose: string
+  objectives: string[]
+  tasks: Task[]
+}
+
+export interface Task {
+  id: string
+  title: string
+  description: string
+  estimatedTime: string
+  priority: 'high' | 'medium' | 'low'
+  status: 'not-started' | 'in-progress' | 'completed'
+}
+
 export interface EventTemplate {
   id: string
   name: string
@@ -7,6 +24,274 @@ export interface EventTemplate {
   category: 'relationship' | 'wedding' | 'housing' | 'family' | 'career' | 'elderly'
   order: number
   keyIssues: string[]
+  issueDetails: IssueDetail[]
+}
+
+// 論点の詳細データ
+const issueDetailsData: Record<string, IssueDetail[]> = {
+  'engagement': [
+    {
+      id: 'engagement-period',
+      title: '婚約期間の長さ',
+      purpose: '結婚に向けた準備期間を適切に設定し、夫婦と両家の準備を整える',
+      objectives: [
+        '結婚式の準備に十分な時間を確保する',
+        '両家の関係を良好に構築する',
+        '夫婦の価値観をすり合わせる',
+        '経済的な準備を整える'
+      ],
+      tasks: [
+        {
+          id: 'ep-task-1',
+          title: '結婚式の希望日を決める',
+          description: '式場の空き状況を確認し、希望する結婚式の日取りを決定する',
+          estimatedTime: '1週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'ep-task-2',
+          title: '両家の顔合わせの日程調整',
+          description: '両家の都合を確認し、顔合わせの日程を調整する',
+          estimatedTime: '2週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'ep-task-3',
+          title: '婚約期間中の計画を立てる',
+          description: '結婚式までの期間で何を準備するか、スケジュールを立てる',
+          estimatedTime: '1週間',
+          priority: 'medium',
+          status: 'not-started'
+        }
+      ]
+    },
+    {
+      id: 'family-meeting',
+      title: '両家の顔合わせのタイミング',
+      purpose: '両家の関係を良好に構築し、結婚に向けた準備を円滑に進める',
+      objectives: [
+        '両家の関係を構築する',
+        '結婚式の方向性を共有する',
+        '今後の準備の役割分担を決める',
+        '文化的・宗教的な違いを確認する'
+      ],
+      tasks: [
+        {
+          id: 'fm-task-1',
+          title: '顔合わせの形式を決める',
+          description: '正式な顔合わせ、カジュアルな食事会など、形式を決める',
+          estimatedTime: '1週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'fm-task-2',
+          title: '会場の手配',
+          description: '顔合わせの会場を手配し、料理や座席を決める',
+          estimatedTime: '2週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'fm-task-3',
+          title: '話題の準備',
+          description: '顔合わせで話す話題や、避けるべき話題を事前に確認する',
+          estimatedTime: '3日',
+          priority: 'medium',
+          status: 'not-started'
+        }
+      ]
+    },
+    {
+      id: 'engagement-ring',
+      title: '婚約指輪の予算',
+      purpose: '夫婦の経済状況に合った婚約指輪を選び、記念に残るものを準備する',
+      objectives: [
+        '予算内で満足できる指輪を選ぶ',
+        '夫婦の価値観に合った指輪を選ぶ',
+        '将来の経済計画に影響しない予算を設定する',
+        '記念に残る特別な指輪を準備する'
+      ],
+      tasks: [
+        {
+          id: 'er-task-1',
+          title: '予算の設定',
+          description: '夫婦の経済状況を考慮して、婚約指輪の予算を設定する',
+          estimatedTime: '1週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'er-task-2',
+          title: '指輪のスタイルを決める',
+          description: 'デザイン、石の種類、サイズなど、指輪のスタイルを決める',
+          estimatedTime: '2週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'er-task-3',
+          title: 'ジュエリーショップを回る',
+          description: '複数のジュエリーショップを回って、最適な指輪を選ぶ',
+          estimatedTime: '1ヶ月',
+          priority: 'medium',
+          status: 'not-started'
+        }
+      ]
+    },
+    {
+      id: 'wedding-scale',
+      title: '結婚式の規模と予算',
+      purpose: '夫婦の希望と経済状況に合った結婚式の規模と予算を決定する',
+      objectives: [
+        '夫婦の希望する結婚式を実現する',
+        '予算内で最高の結婚式を準備する',
+        '両家の希望を調整する',
+        '将来の経済計画に影響しない予算を設定する'
+      ],
+      tasks: [
+        {
+          id: 'ws-task-1',
+          title: '結婚式の規模を決める',
+          description: 'ゲスト数、式場の規模、式の形式などを決める',
+          estimatedTime: '2週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'ws-task-2',
+          title: '予算の配分を決める',
+          description: '式場、衣装、写真、料理など、予算の配分を決める',
+          estimatedTime: '1週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'ws-task-3',
+          title: '両家の負担割合を決める',
+          description: '両家の経済状況を考慮して、負担割合を決める',
+          estimatedTime: '1週間',
+          priority: 'medium',
+          status: 'not-started'
+        }
+      ]
+    },
+    {
+      id: 'new-home-prep',
+      title: '新居の準備時期',
+      purpose: '結婚後の新生活に適した住居を適切な時期に準備する',
+      objectives: [
+        '結婚後の新生活に適した住居を確保する',
+        '経済的に無理のない住居を選ぶ',
+        '通勤や生活に便利な場所を選ぶ',
+        '将来の家族計画を考慮した住居を選ぶ'
+      ],
+      tasks: [
+        {
+          id: 'nh-task-1',
+          title: '住居の希望を整理する',
+          description: 'エリア、間取り、予算、住居形態などの希望を整理する',
+          estimatedTime: '1週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'nh-task-2',
+          title: '物件探しを開始する',
+          description: '不動産会社に相談し、希望に合う物件を探す',
+          estimatedTime: '1ヶ月',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'nh-task-3',
+          title: '引越しの準備を始める',
+          description: '引越し業者の選定や、引越しのスケジュールを決める',
+          estimatedTime: '2週間',
+          priority: 'medium',
+          status: 'not-started'
+        }
+      ]
+    },
+    {
+      id: 'value-alignment',
+      title: '夫婦の価値観のすり合わせ',
+      purpose: '夫婦の価値観を理解し、結婚後の生活方針を統一する',
+      objectives: [
+        'お互いの価値観を理解する',
+        '結婚後の生活方針を統一する',
+        '将来の目標を共有する',
+        '価値観の違いを乗り越える方法を見つける'
+      ],
+      tasks: [
+        {
+          id: 'va-task-1',
+          title: '価値観について話し合う',
+          description: 'お金、仕事、家族、趣味など、様々な価値観について話し合う',
+          estimatedTime: '継続的',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'va-task-2',
+          title: '将来の目標を共有する',
+          description: 'キャリア、家族、住居など、将来の目標を共有する',
+          estimatedTime: '1週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'va-task-3',
+          title: '生活方針を決める',
+          description: '家事分担、お金の管理、余暇の過ごし方などを決める',
+          estimatedTime: '2週間',
+          priority: 'medium',
+          status: 'not-started'
+        }
+      ]
+    }
+  ],
+  'marriage-registration': [
+    {
+      id: 'registration-date',
+      title: '入籍日の選定',
+      purpose: '夫婦にとって記念に残る入籍日を選び、法的な結婚手続きを完了する',
+      objectives: [
+        '記念に残る日付を選ぶ',
+        '手続きがスムーズに進む日を選ぶ',
+        '両家の都合を考慮する',
+        '法的な手続きを完了する'
+      ],
+      tasks: [
+        {
+          id: 'rd-task-1',
+          title: '希望する入籍日を決める',
+          description: '記念日、誕生日、記念に残る日付などを考慮して入籍日を決める',
+          estimatedTime: '1週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'rd-task-2',
+          title: '役所の開庁日を確認する',
+          description: '希望する日が役所の開庁日かどうか確認する',
+          estimatedTime: '1日',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'rd-task-3',
+          title: '両家に報告する',
+          description: '決めた入籍日を両家に報告し、理解を得る',
+          estimatedTime: '1週間',
+          priority: 'medium',
+          status: 'not-started'
+        }
+      ]
+    }
+  ]
 }
 
 export const eventTemplates: EventTemplate[] = [
@@ -25,7 +310,8 @@ export const eventTemplates: EventTemplate[] = [
       '結婚式の規模と予算',
       '新居の準備時期',
       '夫婦の価値観のすり合わせ'
-    ]
+    ],
+    issueDetails: issueDetailsData['engagement'] || []
   },
   {
     id: 'marriage-registration',
@@ -42,7 +328,8 @@ export const eventTemplates: EventTemplate[] = [
       '住民票の変更手続き',
       '健康保険の手続き',
       '税金の変更手続き'
-    ]
+    ],
+    issueDetails: issueDetailsData['marriage-registration'] || []
   },
   {
     id: 'wedding-ceremony',
@@ -59,7 +346,8 @@ export const eventTemplates: EventTemplate[] = [
       '挙式と披露宴の分離',
       '両家の負担割合',
       '二次会の有無と規模'
-    ]
+    ],
+    issueDetails: []
   },
   {
     id: 'honeymoon',
@@ -76,7 +364,8 @@ export const eventTemplates: EventTemplate[] = [
       '旅行スタイル（パック・個人手配）',
       '時期の選定（シーズン・オフシーズン）',
       '保険の加入有無'
-    ]
+    ],
+    issueDetails: []
   },
   {
     id: 'house-hunting',
@@ -93,7 +382,8 @@ export const eventTemplates: EventTemplate[] = [
       '間取りの希望',
       '通勤時間の許容範囲',
       '引越し業者の選定'
-    ]
+    ],
+    issueDetails: []
   },
   {
     id: 'house-purchase',
@@ -110,7 +400,8 @@ export const eventTemplates: EventTemplate[] = [
       '住宅ローンの選定',
       '頭金の準備',
       '諸費用の計算'
-    ]
+    ],
+    issueDetails: []
   },
   {
     id: 'pregnancy-preparation',
@@ -127,7 +418,8 @@ export const eventTemplates: EventTemplate[] = [
       '育児用品の準備',
       '産休・育休の取得',
       '育児の分担'
-    ]
+    ],
+    issueDetails: []
   },
   {
     id: 'childbirth',
@@ -144,7 +436,8 @@ export const eventTemplates: EventTemplate[] = [
       '新生児用品の準備',
       '里帰り出産の有無',
       '産後のサポート体制'
-    ]
+    ],
+    issueDetails: []
   },
   {
     id: 'childcare',
@@ -161,7 +454,8 @@ export const eventTemplates: EventTemplate[] = [
       '子育ての価値観',
       '祖父母との関係',
       '仕事と育児の両立'
-    ]
+    ],
+    issueDetails: []
   },
   {
     id: 'child-education',
@@ -178,7 +472,8 @@ export const eventTemplates: EventTemplate[] = [
       '進路指導の方針',
       '塾・予備校の利用',
       '奨学金の検討'
-    ]
+    ],
+    issueDetails: []
   },
   {
     id: 'parent-care',
@@ -195,7 +490,8 @@ export const eventTemplates: EventTemplate[] = [
       '経済的負担の分担',
       '介護と仕事の両立',
       '介護の長期計画'
-    ]
+    ],
+    issueDetails: []
   },
   {
     id: 'retirement',
@@ -212,7 +508,8 @@ export const eventTemplates: EventTemplate[] = [
       '住居の見直し',
       '健康管理の方法',
       '趣味・活動の計画'
-    ]
+    ],
+    issueDetails: []
   }
 ]
 
@@ -232,4 +529,10 @@ export const getEventTemplateById = (id: string): EventTemplate | undefined => {
 
 export const getEventTemplatesInOrder = (): EventTemplate[] => {
   return [...eventTemplates].sort((a, b) => a.order - b.order)
+}
+
+export const getIssueDetailById = (eventId: string, issueId: string): IssueDetail | undefined => {
+  const event = getEventTemplateById(eventId)
+  if (!event) return undefined
+  return event.issueDetails.find(issue => issue.id === issueId)
 } 
