@@ -102,6 +102,9 @@ export default function Home() {
                         <span>予想予算: ¥{template.estimatedBudget.toLocaleString()}</span>
                         <span>{template.typicalTimeline}</span>
                       </div>
+                      <div className="mt-2 text-xs text-blue-600">
+                        {template.keyIssues.length}個の主要論点
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -124,6 +127,9 @@ export default function Home() {
                   <div className="flex items-center justify-between text-xs text-gray-500 mt-2">
                     <span>予想予算: ¥{template.estimatedBudget.toLocaleString()}</span>
                     <span>{template.typicalTimeline}</span>
+                  </div>
+                  <div className="mt-1 text-xs text-blue-600">
+                    {template.keyIssues.length}個の主要論点
                   </div>
                 </div>
               </div>

@@ -115,6 +115,13 @@ export default function EventsPage() {
                           </svg>
                           典型的なタイミング: {template.typicalTimeline}
                         </div>
+
+                        <div className="flex items-center text-sm text-blue-600">
+                          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                          </svg>
+                          {template.keyIssues.length}個の主要論点
+                        </div>
                       </div>
 
                       <div className="flex justify-end">
@@ -145,6 +152,9 @@ export default function EventsPage() {
                 <div className="flex-1">
                   <h3 className="font-semibold text-gray-900">{template.name}</h3>
                   <p className="text-sm text-gray-600 mt-1">{template.description}</p>
+                  <div className="flex items-center text-xs text-blue-600 mt-2">
+                    <span>{template.keyIssues.length}個の主要論点</span>
+                  </div>
                 </div>
                 <div className="text-gray-400">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

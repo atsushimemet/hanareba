@@ -6,6 +6,7 @@ export interface EventTemplate {
   typicalTimeline: string
   category: 'relationship' | 'wedding' | 'housing' | 'family' | 'career' | 'elderly'
   order: number
+  keyIssues: string[]
 }
 
 export const eventTemplates: EventTemplate[] = [
@@ -16,7 +17,15 @@ export const eventTemplates: EventTemplate[] = [
     estimatedBudget: 500000,
     typicalTimeline: '結婚式の6ヶ月〜1年前',
     category: 'relationship',
-    order: 1
+    order: 1,
+    keyIssues: [
+      '婚約期間の長さ',
+      '両家の顔合わせのタイミング',
+      '婚約指輪の予算',
+      '結婚式の規模と予算',
+      '新居の準備時期',
+      '夫婦の価値観のすり合わせ'
+    ]
   },
   {
     id: 'marriage-registration',
@@ -25,7 +34,15 @@ export const eventTemplates: EventTemplate[] = [
     estimatedBudget: 0,
     typicalTimeline: '結婚式の前後',
     category: 'relationship',
-    order: 2
+    order: 2,
+    keyIssues: [
+      '入籍日の選定',
+      '婚姻届の提出方法',
+      '姓の変更の有無',
+      '住民票の変更手続き',
+      '健康保険の手続き',
+      '税金の変更手続き'
+    ]
   },
   {
     id: 'wedding-ceremony',
@@ -34,7 +51,15 @@ export const eventTemplates: EventTemplate[] = [
     estimatedBudget: 3000000,
     typicalTimeline: '入籍の前後',
     category: 'wedding',
-    order: 3
+    order: 3,
+    keyIssues: [
+      '式場の選定（教会、神社、ホテル等）',
+      'ゲスト数の決定',
+      '予算の配分（式場、衣装、写真等）',
+      '挙式と披露宴の分離',
+      '両家の負担割合',
+      '二次会の有無と規模'
+    ]
   },
   {
     id: 'honeymoon',
@@ -43,7 +68,15 @@ export const eventTemplates: EventTemplate[] = [
     estimatedBudget: 800000,
     typicalTimeline: '結婚式の後',
     category: 'wedding',
-    order: 4
+    order: 4,
+    keyIssues: [
+      '行き先の選定（国内・海外）',
+      '旅行期間の決定',
+      '予算の設定',
+      '旅行スタイル（パック・個人手配）',
+      '時期の選定（シーズン・オフシーズン）',
+      '保険の加入有無'
+    ]
   },
   {
     id: 'house-hunting',
@@ -52,7 +85,15 @@ export const eventTemplates: EventTemplate[] = [
     estimatedBudget: 500000,
     typicalTimeline: '結婚式の前後〜1年後',
     category: 'housing',
-    order: 5
+    order: 5,
+    keyIssues: [
+      '住居形態（賃貸・購入）',
+      'エリアの選定',
+      '予算の設定',
+      '間取りの希望',
+      '通勤時間の許容範囲',
+      '引越し業者の選定'
+    ]
   },
   {
     id: 'house-purchase',
@@ -61,7 +102,15 @@ export const eventTemplates: EventTemplate[] = [
     estimatedBudget: 50000000,
     typicalTimeline: '結婚後1〜3年',
     category: 'housing',
-    order: 6
+    order: 6,
+    keyIssues: [
+      '物件タイプ（新築・中古・建売・注文住宅）',
+      'エリアの選定',
+      '予算の設定',
+      '住宅ローンの選定',
+      '頭金の準備',
+      '諸費用の計算'
+    ]
   },
   {
     id: 'pregnancy-preparation',
@@ -70,7 +119,15 @@ export const eventTemplates: EventTemplate[] = [
     estimatedBudget: 500000,
     typicalTimeline: '結婚後1〜3年',
     category: 'family',
-    order: 7
+    order: 7,
+    keyIssues: [
+      '妊娠のタイミング',
+      '産院の選定',
+      '出産方法の選択',
+      '育児用品の準備',
+      '産休・育休の取得',
+      '育児の分担'
+    ]
   },
   {
     id: 'childbirth',
@@ -79,7 +136,15 @@ export const eventTemplates: EventTemplate[] = [
     estimatedBudget: 300000,
     typicalTimeline: '妊娠準備の9ヶ月後',
     category: 'family',
-    order: 8
+    order: 8,
+    keyIssues: [
+      '出産方法の最終決定',
+      '立ち会い出産の有無',
+      '産後ケアの準備',
+      '新生児用品の準備',
+      '里帰り出産の有無',
+      '産後のサポート体制'
+    ]
   },
   {
     id: 'childcare',
@@ -88,7 +153,15 @@ export const eventTemplates: EventTemplate[] = [
     estimatedBudget: 2000000,
     typicalTimeline: '出産後〜18年',
     category: 'family',
-    order: 9
+    order: 9,
+    keyIssues: [
+      '育児の分担方法',
+      '保育園・幼稚園の選定',
+      '教育方針の統一',
+      '子育ての価値観',
+      '祖父母との関係',
+      '仕事と育児の両立'
+    ]
   },
   {
     id: 'child-education',
@@ -97,7 +170,15 @@ export const eventTemplates: EventTemplate[] = [
     estimatedBudget: 15000000,
     typicalTimeline: '子供3歳〜22歳',
     category: 'family',
-    order: 10
+    order: 10,
+    keyIssues: [
+      '公立・私立の選択',
+      '教育費の準備',
+      '習い事の選択',
+      '進路指導の方針',
+      '塾・予備校の利用',
+      '奨学金の検討'
+    ]
   },
   {
     id: 'parent-care',
@@ -106,7 +187,15 @@ export const eventTemplates: EventTemplate[] = [
     estimatedBudget: 5000000,
     typicalTimeline: '子供が独立後',
     category: 'elderly',
-    order: 11
+    order: 11,
+    keyIssues: [
+      '介護の分担方法',
+      '介護保険の活用',
+      '介護施設の選定',
+      '経済的負担の分担',
+      '介護と仕事の両立',
+      '介護の長期計画'
+    ]
   },
   {
     id: 'retirement',
@@ -115,7 +204,15 @@ export const eventTemplates: EventTemplate[] = [
     estimatedBudget: 30000000,
     typicalTimeline: '60歳〜',
     category: 'elderly',
-    order: 12
+    order: 12,
+    keyIssues: [
+      '定年後の働き方',
+      '老後資金の準備',
+      '年金の受給開始時期',
+      '住居の見直し',
+      '健康管理の方法',
+      '趣味・活動の計画'
+    ]
   }
 ]
 

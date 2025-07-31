@@ -62,14 +62,23 @@ export default function EventDetailModal({ event, isOpen, onClose }: EventDetail
           </div>
 
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <h3 className="font-medium text-blue-900 mb-2">このイベントの主要な論点</h3>
-            <ul className="text-blue-800 text-sm space-y-1">
-              <li>• 予算の設定と管理</li>
-              <li>• スケジュールの調整</li>
-              <li>• 夫婦の価値観のすり合わせ</li>
-              <li>• 家族との調整</li>
-              <li>• 具体的な行動計画</li>
+            <h3 className="font-medium text-blue-900 mb-3">このイベントの主要な論点</h3>
+            <ul className="text-blue-800 text-sm space-y-2">
+              {event.keyIssues.map((issue, index) => (
+                <li key={index} className="flex items-start">
+                  <span className="text-blue-600 mr-2 mt-1">•</span>
+                  <span>{issue}</span>
+                </li>
+              ))}
             </ul>
+          </div>
+
+          <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+            <h3 className="font-medium text-green-900 mb-2">次のステップ</h3>
+            <p className="text-green-800 text-sm">
+              これらの論点について夫婦で話し合い、優先順位をつけて合意を形成しましょう。
+              各論点について具体的な選択肢を検討し、行動計画を立てることが重要です。
+            </p>
           </div>
         </div>
 
