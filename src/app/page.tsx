@@ -15,7 +15,7 @@ export default function Home() {
           Hanareba（はなれば）は、結婚後のライフイベントを「論点起点」で整理し、
           夫婦ふたりで合意しながら前に進めるためのアプリです。
         </p>
-        <div className="flex justify-center space-x-4">
+        <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
           <Link
             href="/events/new"
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
@@ -78,28 +78,52 @@ export default function Home() {
           これらを参考に、あなたたちの「これから」を計画しましょう。
         </p>
         
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gray-200 h-full"></div>
-          
-          {/* Timeline Events */}
-          <div className="space-y-6">
-            {templatesInOrder.slice(0, 8).map((template, index) => (
-              <div key={template.id} className={`relative flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
-                {/* Timeline Node */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10 flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">{index + 1}</span>
-                </div>
-                
-                {/* Event Card */}
-                <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
-                  <div className="bg-gray-50 rounded-lg border border-gray-200 p-4">
-                    <h3 className="font-semibold text-gray-900 mb-2">{template.name}</h3>
-                    <p className="text-sm text-gray-600 mb-2">{template.description}</p>
-                    <div className="flex items-center justify-between text-xs text-gray-500">
-                      <span>予想予算: ¥{template.estimatedBudget.toLocaleString()}</span>
-                      <span>{template.typicalTimeline}</span>
+        {/* Desktop Timeline */}
+        <div className="hidden lg:block">
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gray-200 h-full"></div>
+            
+            {/* Timeline Events */}
+            <div className="space-y-6">
+              {templatesInOrder.slice(0, 8).map((template, index) => (
+                <div key={template.id} className={`relative flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
+                  {/* Timeline Node */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10 flex items-center justify-center">
+                    <span className="text-white text-xs font-bold">{index + 1}</span>
+                  </div>
+                  
+                  {/* Event Card */}
+                  <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
+                    <div className="bg-gray-50 rounded-lg border border-gray-200 p-4">
+                      <h3 className="font-semibold text-gray-900 mb-2">{template.name}</h3>
+                      <p className="text-sm text-gray-600 mb-2">{template.description}</p>
+                      <div className="flex items-center justify-between text-xs text-gray-500">
+                        <span>予想予算: ¥{template.estimatedBudget.toLocaleString()}</span>
+                        <span>{template.typicalTimeline}</span>
+                      </div>
                     </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Timeline */}
+        <div className="lg:hidden">
+          <div className="space-y-4">
+            {templatesInOrder.slice(0, 6).map((template, index) => (
+              <div key={template.id} className="flex items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-bold mr-4">
+                  {index + 1}
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-gray-900">{template.name}</h3>
+                  <p className="text-sm text-gray-600 mt-1">{template.description}</p>
+                  <div className="flex items-center justify-between text-xs text-gray-500 mt-2">
+                    <span>予想予算: ¥{template.estimatedBudget.toLocaleString()}</span>
+                    <span>{template.typicalTimeline}</span>
                   </div>
                 </div>
               </div>

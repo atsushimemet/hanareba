@@ -110,8 +110,8 @@ export default function NewEventPage() {
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8">
-        {/* Default Timeline */}
-        <div className="space-y-6">
+        {/* Default Timeline - Desktop */}
+        <div className="hidden lg:block space-y-6">
           <h2 className="text-2xl font-bold text-gray-900">一般的なライフイベントタイムライン</h2>
           <p className="text-gray-600">
             夫婦の人生でよく起こるイベントを時系列順に表示しています。参考にしてイベントを作成してください。
@@ -262,6 +262,46 @@ export default function NewEventPage() {
               </button>
             </div>
           </form>
+        </div>
+      </div>
+
+      {/* Mobile Template Selection */}
+      <div className="lg:hidden mt-8">
+        <h2 className="text-xl font-bold text-gray-900 mb-4">テンプレートから選択</h2>
+        <div className="space-y-3">
+          {templatesInOrder.map((template, index) => (
+            <div
+              key={template.id}
+              className={`p-4 border rounded-lg cursor-pointer transition-colors ${
+                selectedTemplate?.id === template.id
+                  ? 'border-blue-500 bg-blue-50'
+                  : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
+              }`}
+              onClick={() => handleTemplateSelect(template)}
+            >
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-sm font-semibold text-blue-600">
+                  {index + 1}
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-gray-900">{template.name}</h3>
+                  <p className="text-sm text-gray-600 mt-1">{template.description}</p>
+                  <div className="flex items-center space-x-4 mt-2 text-xs text-gray-500">
+                    <span>予想予算: {formatBudget(template.estimatedBudget)}</span>
+                    <span>•</span>
+                    <span>{template.typicalTimeline}</span>
+                  </div>
+                </div>
+                {selectedTemplate?.id === template.id && (
+                  <div className="text-blue-600">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
