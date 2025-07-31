@@ -1,6 +1,9 @@
+import { getEventTemplatesInOrder } from '@/lib/event-templates'
 import Link from 'next/link'
 
 export default function Home() {
+  const templatesInOrder = getEventTemplatesInOrder()
+
   return (
     <div className="space-y-8">
       {/* Hero Section */}
@@ -67,23 +70,50 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Event Templates Section */}
+      {/* Life Event Timeline Section */}
       <div className="bg-white p-8 rounded-lg shadow-sm">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">主要なライフイベント</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            { name: '入籍', description: '婚姻届の提出と手続き' },
-            { name: '結婚式', description: '式場選びと式の準備' },
-            { name: '住居購入', description: '物件選びと購入手続き' },
-            { name: '出産', description: '産院選びと出産準備' },
-            { name: '帰省', description: '実家への帰省計画' },
-            { name: 'カスタム', description: 'その他のイベント' },
-          ].map((event) => (
-            <div key={event.name} className="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-              <h3 className="font-semibold text-gray-900 mb-2">{event.name}</h3>
-              <p className="text-gray-600 text-sm">{event.description}</p>
-            </div>
-          ))}
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">夫婦のライフイベントタイムライン</h2>
+        <p className="text-gray-600 mb-8">
+          一般的な夫婦の人生で起こる主要なイベントを時系列順に表示しています。
+          これらを参考に、あなたたちの「これから」を計画しましょう。
+        </p>
+        
+        <div className="relative">
+          {/* Timeline Line */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gray-200 h-full"></div>
+          
+          {/* Timeline Events */}
+          <div className="space-y-6">
+            {templatesInOrder.slice(0, 8).map((template, index) => (
+              <div key={template.id} className={`relative flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
+                {/* Timeline Node */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10 flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">{index + 1}</span>
+                </div>
+                
+                {/* Event Card */}
+                <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
+                  <div className="bg-gray-50 rounded-lg border border-gray-200 p-4">
+                    <h3 className="font-semibold text-gray-900 mb-2">{template.name}</h3>
+                    <p className="text-sm text-gray-600 mb-2">{template.description}</p>
+                    <div className="flex items-center justify-between text-xs text-gray-500">
+                      <span>予想予算: ¥{template.estimatedBudget.toLocaleString()}</span>
+                      <span>{template.typicalTimeline}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <div className="text-center mt-8">
+          <Link
+            href="/events/new"
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            あなたのイベントを作成
+          </Link>
         </div>
       </div>
 
