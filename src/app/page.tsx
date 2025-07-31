@@ -1,3 +1,4 @@
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -12,12 +13,18 @@ export default function Home() {
           夫婦ふたりで合意しながら前に進めるためのアプリです。
         </p>
         <div className="flex justify-center space-x-4">
-          <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+          <Link
+            href="/events/new"
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+          >
             今すぐ始める
-          </button>
-          <button className="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors">
-            詳細を見る
-          </button>
+          </Link>
+          <Link
+            href="/events"
+            className="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            イベント一覧を見る
+          </Link>
         </div>
       </div>
 
@@ -88,9 +95,12 @@ export default function Home() {
         <p className="text-gray-600 mb-6">
           夫婦のすれ違いを防ぎ、対話と合意を支援する暮らしのプロジェクト管理ツール
         </p>
-        <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+        <Link
+          href="/events/new"
+          className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+        >
           無料で始める
-        </button>
+        </Link>
       </div>
     </div>
   )
