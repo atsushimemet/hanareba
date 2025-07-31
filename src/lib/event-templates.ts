@@ -290,6 +290,191 @@ const issueDetailsData: Record<string, IssueDetail[]> = {
           status: 'not-started'
         }
       ]
+    },
+    {
+      id: 'marriage-form',
+      title: '婚姻届の提出方法',
+      purpose: '法的な結婚手続きを正しく完了し、夫婦として認められる',
+      objectives: [
+        '法的な結婚手続きを完了する',
+        '必要な書類を準備する',
+        '提出方法を理解する',
+        '手続きをスムーズに進める'
+      ],
+      tasks: [
+        {
+          id: 'mf-task-1',
+          title: '必要な書類を確認する',
+          description: '婚姻届、戸籍謄本、身分証明書など、必要な書類を確認する',
+          estimatedTime: '1週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'mf-task-2',
+          title: '婚姻届を記入する',
+          description: '婚姻届に必要な情報を記入し、署名捺印する',
+          estimatedTime: '1日',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'mf-task-3',
+          title: '提出先を確認する',
+          description: '提出先の役所や提出方法を確認する',
+          estimatedTime: '1日',
+          priority: 'medium',
+          status: 'not-started'
+        }
+      ]
+    },
+    {
+      id: 'name-change',
+      title: '姓の変更の有無',
+      purpose: '夫婦の姓について話し合い、最適な選択をする',
+      objectives: [
+        '夫婦の姓について合意を形成する',
+        '法的な手続きを理解する',
+        '社会的な影響を考慮する',
+        '将来の家族計画を考慮する'
+      ],
+      tasks: [
+        {
+          id: 'nc-task-1',
+          title: '姓の選択肢を確認する',
+          description: '夫の姓、妻の姓、別姓など、選択肢を確認する',
+          estimatedTime: '1週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'nc-task-2',
+          title: '法的な手続きを理解する',
+          description: '姓の変更に必要な手続きや書類を理解する',
+          estimatedTime: '1週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'nc-task-3',
+          title: '社会的な影響を考慮する',
+          description: '仕事、銀行口座、各種手続きへの影響を考慮する',
+          estimatedTime: '2週間',
+          priority: 'medium',
+          status: 'not-started'
+        }
+      ]
+    },
+    {
+      id: 'residence-change',
+      title: '住民票の変更手続き',
+      purpose: '結婚に伴う住所変更を正しく手続きし、新しい生活を開始する',
+      objectives: [
+        '新しい住所に住民票を変更する',
+        '必要な手続きを完了する',
+        '各種サービスを新しい住所に変更する',
+        '新しい生活をスムーズに開始する'
+      ],
+      tasks: [
+        {
+          id: 'rc-task-1',
+          title: '新しい住所を決める',
+          description: '夫婦の新しい住所を決定する',
+          estimatedTime: '1週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'rc-task-2',
+          title: '住民票の変更手続き',
+          description: '役所で住民票の変更手続きを行う',
+          estimatedTime: '1日',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'rc-task-3',
+          title: '各種手続きの変更',
+          description: '銀行、クレジットカード、保険などの住所変更を行う',
+          estimatedTime: '2週間',
+          priority: 'medium',
+          status: 'not-started'
+        }
+      ]
+    },
+    {
+      id: 'health-insurance',
+      title: '健康保険の手続き',
+      purpose: '結婚に伴う健康保険の変更を正しく手続きし、適切な保険に加入する',
+      objectives: [
+        '適切な健康保険に加入する',
+        '保険料の負担を最適化する',
+        '必要な手続きを完了する',
+        '将来の家族計画を考慮する'
+      ],
+      tasks: [
+        {
+          id: 'hi-task-1',
+          title: '健康保険の選択肢を確認する',
+          description: '国民健康保険、社会保険、共済など、選択肢を確認する',
+          estimatedTime: '1週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'hi-task-2',
+          title: '保険料を比較する',
+          description: '各保険の保険料を比較し、最適な選択をする',
+          estimatedTime: '1週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'hi-task-3',
+          title: '加入手続きを行う',
+          description: '選択した健康保険への加入手続きを行う',
+          estimatedTime: '1週間',
+          priority: 'medium',
+          status: 'not-started'
+        }
+      ]
+    },
+    {
+      id: 'tax-changes',
+      title: '税金の変更手続き',
+      purpose: '結婚に伴う税金の変更を正しく手続きし、適切な税制を活用する',
+      objectives: [
+        '適切な税制を理解する',
+        '必要な手続きを完了する',
+        '税制上のメリットを活用する',
+        '将来の税務計画を立てる'
+      ],
+      tasks: [
+        {
+          id: 'tc-task-1',
+          title: '税制の変更を理解する',
+          description: '結婚による税制の変更点を理解する',
+          estimatedTime: '1週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'tc-task-2',
+          title: '年末調整の準備',
+          description: '年末調整に必要な書類を準備する',
+          estimatedTime: '1週間',
+          priority: 'high',
+          status: 'not-started'
+        },
+        {
+          id: 'tc-task-3',
+          title: '税務署への届出',
+          description: '必要に応じて税務署への届出を行う',
+          estimatedTime: '1週間',
+          priority: 'medium',
+          status: 'not-started'
+        }
+      ]
     }
   ]
 }
