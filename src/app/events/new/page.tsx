@@ -1,9 +1,9 @@
 'use client'
 
-import { EventTemplate, getEventTemplatesInOrder } from '@/lib/event-templates'
+import { EventTemplate, getEventTemplateById, getEventTemplatesInOrder } from '@/lib/event-templates'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 interface EventFormData {
   name: string
@@ -14,6 +14,7 @@ interface EventFormData {
 
 export default function NewEventPage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [formData, setFormData] = useState<EventFormData>({
     name: '',
     scheduledDate: '',
@@ -23,6 +24,17 @@ export default function NewEventPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [selectedTemplate, setSelectedTemplate] = useState<EventTemplate | null>(null)
+
+  useEffect(() => {
+    // URLパラメータからテンプレートIDを取得
+    const templateId = searchParams.get('template')
+    if (templateId) {
+      const template = getEventTemplateById(templateId)
+      if (template) {
+        handleTemplateSelect(template)
+      }
+    }
+  }, [searchParams])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -147,6 +159,13 @@ export default function NewEventPage() {
         {/* Form */}
         <div className="space-y-6">
           <h2 className="text-2xl font-bold text-gray-900">イベント詳細</h2>
+          
+          {selectedTemplate && (
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <h3 className="font-semibold text-blue-900 mb-2">選択されたテンプレート</h3>
+              <p className="text-blue-800 text-sm">{selectedTemplate.name}</p>
+            </div>
+          )}
           
           <form onSubmit={handleSubmit} className="space-y-6">
             {error && (
