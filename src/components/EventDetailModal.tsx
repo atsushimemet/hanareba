@@ -60,16 +60,27 @@ export default function EventDetailModal({ event, isOpen, onClose }: EventDetail
               {event.category === 'elderly' && '老後'}
             </span>
           </div>
+
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <h3 className="font-medium text-blue-900 mb-2">このイベントの主要な論点</h3>
+            <ul className="text-blue-800 text-sm space-y-1">
+              <li>• 予算の設定と管理</li>
+              <li>• スケジュールの調整</li>
+              <li>• 夫婦の価値観のすり合わせ</li>
+              <li>• 家族との調整</li>
+              <li>• 具体的な行動計画</li>
+            </ul>
+          </div>
         </div>
 
         {/* Footer */}
         <div className="p-4 border-t border-gray-200">
-          <a
-            href={`/events/new?template=${event.id}`}
+          <button
+            onClick={onClose}
             className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors text-center block"
           >
-            このイベントを作成
-          </a>
+            閉じる
+          </button>
         </div>
       </div>
     </div>

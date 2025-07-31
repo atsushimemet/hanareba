@@ -37,10 +37,10 @@ export default function RootLayout({
                     ホーム
                   </Link>
                   <Link href="/events" className="text-gray-700 hover:text-gray-900">
-                    イベント
+                    ライフイベント
                   </Link>
-                  <Link href="/login" className="text-gray-700 hover:text-gray-900">
-                    ログイン
+                  <Link href="/events" className="text-gray-700 hover:text-gray-900">
+                    論点管理
                   </Link>
                 </nav>
               </div>

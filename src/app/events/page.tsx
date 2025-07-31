@@ -2,7 +2,6 @@
 
 import EventDetailModal from '@/components/EventDetailModal'
 import { EventTemplate, getEventTemplatesInOrder } from '@/lib/event-templates'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 interface Event {
@@ -64,20 +63,15 @@ export default function EventsPage() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-gray-900">ライフイベントタイムライン</h1>
-        <Link
-          href="/events/new"
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-        >
-          新しいイベントを作成
-        </Link>
+        <h1 className="text-3xl font-bold text-gray-900">ライフイベントと論点</h1>
       </div>
 
       {/* Default Timeline */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
         <h2 className="text-xl font-semibold text-gray-900 mb-6">一般的なライフイベントタイムライン</h2>
         <p className="text-gray-600 mb-8">
-          夫婦の人生でよく起こるイベントを時系列順に表示しています。これらを参考に、あなたたちの「これから」を計画しましょう。
+          夫婦の人生でよく起こるイベントと、それぞれの重要な論点を時系列順に表示しています。
+          各イベントをクリックして、詳細な論点とタスクを確認しましょう。
         </p>
         
         {/* Desktop Timeline */}
@@ -97,7 +91,7 @@ export default function EventsPage() {
                   
                   {/* Event Card */}
                   <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
-                    <div className="bg-gray-50 rounded-lg border border-gray-200 hover:shadow-md transition-shadow p-6">
+                    <div className="bg-gray-50 rounded-lg border border-gray-200 hover:shadow-md transition-shadow p-6 cursor-pointer" onClick={() => handleEventClick(template)}>
                       <div className="flex justify-between items-start mb-4">
                         <h3 className="text-xl font-semibold text-gray-900">{template.name}</h3>
                         <div className="text-xs text-gray-500 bg-blue-100 px-2 py-1 rounded">
@@ -124,12 +118,9 @@ export default function EventsPage() {
                       </div>
 
                       <div className="flex justify-end">
-                        <Link
-                          href={`/events/new?template=${template.id}`}
-                          className="text-blue-600 hover:text-blue-800 text-sm font-medium"
-                        >
-                          このイベントを作成 →
-                        </Link>
+                        <span className="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                          論点とタスクを確認 →
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -167,14 +158,8 @@ export default function EventsPage() {
         
         <div className="text-center mt-8 pt-6 border-t border-gray-200">
           <p className="text-gray-600 mb-4">
-            これらのイベントを参考に、あなたたちのライフイベントを計画しましょう
+            各イベントの論点を整理し、夫婦で合意を形成しましょう
           </p>
-          <Link
-            href="/events/new"
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            カスタムイベントを作成
-          </Link>
         </div>
       </div>
 
