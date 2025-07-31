@@ -1,15 +1,15 @@
 import { prisma } from '@/lib/prisma'
 import { NextRequest, NextResponse } from 'next/server'
 
-// GET /api/events/[id] - 特定のイベント取得
+// GET /api/events/[eventId] - 特定のイベント取得
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: { eventId: string } }
 ) {
   try {
     const event = await prisma.event.findUnique({
       where: {
-        id: params.id
+        id: params.eventId
       }
     })
 
